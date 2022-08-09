@@ -16,13 +16,13 @@ st.set_page_config(
 )
 
 listePf = [
-    ["Volontaire", "5", "3-4", "3%"],
-    ["Énergique", "5", "4-5", "5%"],
-    ["Ambitieux", "6", "4-5-6", "8%", ],
-    ["Intrépide", "6", "5-6", "12%", ],
-    ["Climat", "5", "6", "-",],
-    ["Tech", "3", "5-6", "-", ],
-    ["Relance", "3", "5-6", "-", ],
+    ["Volontaire", "5", "3", "3%"],
+    ["Énergique", "5", "4", "5%"],
+    ["Ambitieux", "6", "5", "8%", ],
+    ["Intrépide", "6", "6", "12%", ],
+    ["Climat", "5", "5", "-",],
+    ["Tech", "3", "6", "-", ],
+    ["Relance", "3", "6", "-", ],
     ["Santé", "2", "6", "-", ],
     ["Solidarité", "1", "3", "-", ],
     ["Égalité", "1", "6", "-", ],
@@ -436,8 +436,8 @@ else :
                 value = perf_portefeuille
             )
         
-        st.write("### Liste des fonds")
-        st.write(fonds_pf)
+        # st.write("### Liste des fonds")
+        # st.write(fonds_pf)
 
         dataActif_pf = pd.DataFrame()
         listeActif_pf = []
@@ -491,20 +491,23 @@ else :
         dataGeo_pf.reset_index(inplace=True)
         dataGeo_pf.columns = ['Pays', 'Pourcentage']
 
-        st.markdown("### Allocation d'actifs")
-        st.write(dataActif_pf)
-
         col1, col2 = st.columns(2)
 
         with col1 :
+            st.write("### Liste des fonds")
+            st.write(fonds_pf)
+        
+        with col2 :
             st.markdown("### Allocation d'actifs")
             st.write(dataActif_pf)
         
+        col3, col4 = st.columns(2)
+
         if len(dataSecteur_pf.columns) == 0 :
-            with col2 :
+            with col3 :
                 st.write("### ❌ Pas de données sur les secteurs")
         else : 
-            with col2 :
+            with col3 :
                 st.markdown("### Secteurs")
                 fig1, ax1 = plt.subplots()
                 ax1.pie(dataSecteur_pf.values, labels=dataSecteur_pf.index, autopct='%1.1f%%', shadow=False, startangle=180)
@@ -512,11 +515,14 @@ else :
                 st.write(fig1)
 
         if len(dataGeo_pf.columns) == 0 : 
-            st.write("### ❌ Pas de données sur l'exposition géographique'")
+            with col4 :
+                st.write("### ❌ Pas de données sur l'exposition géographique'")
         else : 
-            fig2 = alt.Chart(dataGeo_pf).mark_bar().encode(
-                x = 'Pourcentage',
-                y = alt.Y('Pays', sort='-x'),
-                color = 'Pourcentage'
-            )
-            st.altair_chart(fig2, use_container_width=True)
+            with col4 :
+                st.markdown("### Répartition géographique")
+                fig2 = alt.Chart(dataGeo_pf).mark_bar().encode(
+                    x = 'Pourcentage',
+                    y = alt.Y('Pays', sort='-x'),
+                    color = 'Pourcentage'
+                )
+                st.altair_chart(fig2, use_container_width=True)
