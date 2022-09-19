@@ -1,4 +1,3 @@
-from cProfile import label
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 import streamlit as st

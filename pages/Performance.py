@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import pandas as pd
-import pandas_datareader.data as web
 import numpy as np
 from bs4 import BeautifulSoup
 import time
