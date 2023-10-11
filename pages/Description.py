@@ -73,6 +73,7 @@ listePf = [
     [RELANCE, "3", "6", "-", ],
 ]
 
+
 listePortefeuilles = {
     VOLONTAIRE : {
         LAZARD_PATRIMOINE : 0.25,
