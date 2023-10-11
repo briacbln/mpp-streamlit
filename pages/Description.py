@@ -258,13 +258,14 @@ def load_isin_data(isin, _date=''):
 
         tbl_compo = soup.find('table', 'c-table c-table--bottom-space')
 
-        for row in tbl_compo.find_all('tr'):
-            columns = row.find_all('td')
-            if columns != [] :
-                nom_ligne = columns[0].text.strip()
-                prct_ligne = columns[1].find('div').get('data-gauge-current-step')
-                noms.append(nom_ligne)
-                prcts.append(prct_ligne)
+        if tbl_compo is not None:
+            for row in tbl_compo.find_all('tr'):
+                columns = row.find_all('td')
+                if columns != [] :
+                    nom_ligne = columns[0].text.strip()
+                    prct_ligne = columns[1].find('div').get('data-gauge-current-step')
+                    noms.append(nom_ligne)
+                    prcts.append(prct_ligne)
 
         if noms != [] and  prcts != [] : 
             ligne = pd.DataFrame({'Nom': noms, 'Pourcentage': prcts})
@@ -289,7 +290,8 @@ def load_isin_data(isin, _date=''):
         
         dataFunds[isin] = [nom_fonds, valeur_fonds, variation_fonds, risque_fonds, ligne, geographicalAlloc, typeAlloc, sectorAlloc]
 
-    except :
+    except Exception as e:
+        print(e)
         dataFunds[isin] = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
         
     return dataFunds
