@@ -14,119 +14,156 @@ st.set_page_config(
     layout = "wide"
 )
 
+VOLONTAIRE = 'Volontaire'
+ENERGIQUE = 'Énergique'
+AMBITIEUX = 'Ambitieux'
+INTREPIDE = 'Intrépide'
+CLIMAT = 'Climat'
+TECH = 'Tech'
+RELANCE = 'Relance'
+SANTE = 'Santé'
+SOLIDARITE = 'Solidarité'
+EGALITE = 'Égalité'
+EMPLOI = 'Emploi'
+
+TIKEHAU_INTERNATIONAL = 'LU2147879543'
+LAZARD_PATRIMOINE = 'FR0012355139'
+DNCA_APHA_BONDS = 'LU1694789535'
+CARMIGNAC_PATRIMOINE = 'FR0010135103'
+DORVAL_GLOBAL_CONVICTIONS = 'FR0010687053'
+ELEVA_UCITS = 'LU1920211973'
+MG_LUX_DYNAMIC = 'LU1582988058'
+PIQUEMAL_HOUGHTON = 'LU2261172451'
+CLARTAN_VALEURS = 'LU1100076550'
+GINJER_ACTIFS = 'FR0011153014'
+PICTET_TR_ATLAS = 'LU1433232854'
+RCO_VALOR = 'FR0011253624'
+CARMIGNAC_EMERGENTS = 'FR0010149302'
+FIDELITY_WORLD = 'LU1261432659'
+RCO_CONVICTION = 'FR0010187898'
+MIROVA_WOMEN = 'LU1956003765'
+MIROVA_INSERTION = 'FR0000970873'
+SYCOMORE_HAPPY_AT_WORK = 'LU1301026388'
+SYCOMORE_ECO_SOLUTIONS = 'LU1183791794'
+MANDARINE_TRANSITION = 'LU2257980289'
+MIROVA_EUROPE = 'LU0914733059'
+AMUNDI_RI_GREEN = 'FR0013411741'
+ECOFI_AGIR = 'FR0010642280'
+JPM_HEALTHCARE = 'LU0880062913'
+MANDARINE_SPORT = 'LU2257982228'
+AMUNDI_SOLIDARITE = 'FR0011363746'
+ECHIQUIER_AI = 'LU1819480192'
+PICTET_ROBOTICS = 'LU1279334210'
+THEMATICS_SAFETY = 'LU1951225553'
+AMIRAL_SEXTANT = 'FR0010547869'
+MONETA_MULTI_CAPS = 'FR0010298596'
+
+
 listePf = [
-    ["Volontaire", "5", "3", "3%"],
-    ["Énergique", "5", "4", "5%"],
-    ["Ambitieux", "6", "5", "8%", ],
-    ["Intrépide", "6", "6", "12%", ],
-    ["Climat", "5", "5", "-",],
-    ["Tech", "3", "6", "-", ],
-    ["Relance", "3", "6", "-", ],
-    ["Santé", "2", "6", "-", ],
-    ["Solidarité", "1", "3", "-", ],
-    ["Égalité", "1", "6", "-", ],
-    ["Emploi", "2", "5", "-", ],
+    [VOLONTAIRE, "5", "3", "3%"],
+    [ENERGIQUE, "5", "4", "5%"],
+    [AMBITIEUX, "6", "5", "8%", ],
+    [INTREPIDE, "6", "6", "12%", ],
+    [EGALITE, "1", "6", "-", ],
+    [EMPLOI, "2", "5", "-", ],
+    [CLIMAT, "5", "5", "-",],
+    [SANTE, "2", "6", "-", ],
+    [SOLIDARITE, "1", "3", "-", ],
+    [TECH, "3", "6", "-", ],
+    [RELANCE, "3", "6", "-", ],
 ]
 
 listePortefeuilles = {
-    "Volontaire" : {
-        "FR0010135103" : 0.25,
-        "LU1694789535" : 0.2,
-        "FR0010687053" : 0.15,
-        "FR0012355139" : 0.25,
-        "LU2147879543" : 0.15
+    VOLONTAIRE : {
+        LAZARD_PATRIMOINE : 0.25,
+        CARMIGNAC_PATRIMOINE : 0.25,
+        DNCA_APHA_BONDS : 0.2,
+        TIKEHAU_INTERNATIONAL : 0.15,
+        DORVAL_GLOBAL_CONVICTIONS : 0.15,
     },
-    "Énergique" : {
-        # "LU1920211973" : 0.2,
-        "LU0115098948" : 0.25,
-        "FR0012355139" : 0.2,
-        "LU1582988058" : 0.15,
-        "LU2358389745" : 0.2
+    ENERGIQUE : {
+        ELEVA_UCITS : 0.3,
+        LAZARD_PATRIMOINE : 0.25,
+        MG_LUX_DYNAMIC : 0.25,
+        PIQUEMAL_HOUGHTON : 0.2,
     },
-    "Ambitieux" : {
-        "LU1100076550" : 0.18,
-        "FR0000284689" : 0.17,
-        "FR0010321810" : 0.11,
-        "FR0011153014" : 0.18,
-        "LU1582988058" : 0.15,
-        "LU2358389745" : 0.21
+    AMBITIEUX : {
+        CLARTAN_VALEURS : 0.25,
+        GINJER_ACTIFS : 0.25,
+        PICTET_TR_ATLAS : 0.25,
+        RCO_VALOR : 0.25,
     },
-    "Intrépide" : {
-        "FR0010149302" : 0.2,
-        "FR0000284689" : 0.19,
-        "LU1261432659" : 0.17,
-        "LU0159053015" : 0.11,
-        "LU0386882277" : 0.13,
-        "FR0010187898" : 0.2
+    INTREPIDE : {
+        CARMIGNAC_EMERGENTS : 0.25,
+        FIDELITY_WORLD : 0.25,
+        PIQUEMAL_HOUGHTON : 0.25,
+        RCO_CONVICTION : 0.25,
     },
-    "Climat" : {
-        "LU2257980289" : 0.22,
-        "LU1183791794" : 0.23,
-        "LU0914733059" : 0.20,
-        "FR0010642280" : 0.20,
-        "FR0013411741" : 0.15
+    EGALITE : {
+        MIROVA_WOMEN : 1,
     },
-    "Tech" : {
-        "LU1819480192" : 0.34,
-        "LU1279334210" : 0.33,
-        "LU1951225553" : 0.33
+    EMPLOI : {
+        MIROVA_INSERTION : 0.5,
+        SYCOMORE_HAPPY_AT_WORK : 0.5,
     },
-    "Relance" : {
-        "FR0010298596" : 0.33,
-        "FR0000970873" : 0.34,
-        "FR0010547869" : 0.33
+    CLIMAT : {
+        SYCOMORE_ECO_SOLUTIONS : 0.23,
+        MANDARINE_TRANSITION : 0.22,
+        MIROVA_EUROPE : 0.20,
+        ECOFI_AGIR : 0.20,
+        AMUNDI_RI_GREEN : 0.15
     },
-    "Santé" : {
-        "LU2257982228" : 0.5,
-        "LU0880062913" : 0.5
+    SANTE : {
+        JPM_HEALTHCARE : 0.5,
+        MANDARINE_SPORT : 0.5,
     },
-    "Solidarité" : {
-        "FR0011363746" : 1
+    SOLIDARITE : {
+        AMUNDI_SOLIDARITE : 1,
     },
-    "Égalité" : {
-        "LU1956003765" : 1
+    TECH : {
+        ECHIQUIER_AI : 0.34,
+        PICTET_ROBOTICS : 0.33,
+        THEMATICS_SAFETY : 0.33,
     },
-    "Emploi" : {
-        "LU1301026388" : 0.5,
-        "FR0000970873" : 0.5
-    }
+    RELANCE : {
+        AMIRAL_SEXTANT : 0.34,
+        MONETA_MULTI_CAPS : 0.33,
+        MIROVA_INSERTION : 0.33,
+    },
 }
 
 listeIsin = [
-    ["FR0010135103", "Carmignac Patrimoine A EUR Acc", "", "Croissance", "Grande"],
-    ["LU1694789535", "DNCA Invest Alpha Bonds B EUR Acc", "", "", ""],
-    ["FR0010687053", "Dorval Global Convictions R", "ISR", "Mixte", "Grande"],
-    ["FR0012355139", "Lazard Patrimoine SRI RC EUR", "ISR", "Mixte", "Grande"],
-    ["LU2147879543", "Tikehau International Cross Assets R Acc", "", "Croissance", "Grande"],
-    # ["LU1920211973", "Eleva Abs Return Europe Fd A2 EUR Acc", ""],
-    ["LU0115098948", "JPMIF Global Macro Opport D (acc) EUR", "", "Croissance", "Grande"],
-    ["LU1582988058", "M&G Lux Dynamic Allocat Fd A EUR Acc", "", "Valeur", "Grande"],
-    ["LU2358389745", "Varenne Global A EUR", "", "Mixte", "Grande"],
-    ["LU1100076550", "Clartan Valeurs C EUR Acc", "", "Valeur", "Grande"],
-    ["FR0000284689", "Comgest Monde C", "", "Croissance", "Grande"],
-    ["FR0010321810", "Echiquier Agenor SRI Mid Cap Europe A", "ISR", "Croissance", "Mid"],
-    ["FR0011153014", "Ginjer Actifs 360 A", "", "Valeur", "Grande"],
-    ["FR0010149302", "Carmignac Emergents A EUR Acc", "ISR", "Mixte", "Grande"],
-    ["LU1261432659", "FF World Fund A Acc EUR", "", "Mixte", "Grande"],
-    ["LU0159053015", "JPM US Technology Fund D Acc EUR", "", "Croissance", "Grande"],
-    ["LU0386882277", "Pictet - Gbl Megatrend Select P EUR Acc", "", "Croissance", "Grande"],
-    ["FR0010187898", "R-co Conviction Equity Value Euro C EUR", "", "Valeur", "Grande"],
-    ["LU2257980289", "Mandarine Global Transition", "GREENFIN", "Croissance", "Grande"],
-    ["LU1183791794", "Sycomore Eco solution", "ISR - GREENFIN", "Croissance", "Moyenne"],
-    ["LU1956003765", "Mirova Women", "ISR", "Croissance", "Grande"],
-    ["LU1301026388", "Sycomore Fund Happy", "ISR", "Croissance", "Grande"],
-    ["FR0000970873", "Insertion Emplois Dynamique", "ISR - FINANSOL - RELANCE", "Croissance", "Grande"],
-    ["FR0010298596", "Moneta Multi Caps", "RELANCE", "Mixte", "Moyenne"],
-    ["FR0010547869", "Sextant PME A", "ISR - RELANCE", "Mixte", "Petite"],
-    ["FR0011363746", "Solidarite Habitat et Humanisme", "FINANSOL", "Mixte", "Grande"],
-    ["LU2257982228", "Mandarine Global Sport", "ISR", "Croissance", "Moyenne"],
-    ["LU0880062913", "JPM Global Healthcare Fund", "", "Croissance", "Grande"],
-    ["LU1279334210", "Pictet Robotics", "", "Croissance", "Grande"],
-    ["LU1951225553", "NIF Lux Thematics Safety", "ISR", "Croissance", "Moyenne"],
-    ["LU1819480192", "Echiquier Artificial Intelligence", "", "Croissance", "Grande"],
-    ["LU0914733059", "Mirova Europe Environmental Eq R EUR Acc", "ISR - GREENFIN", "Croissance", "Grande"],
-    ["FR0010642280", "Ecofi Agir Pour Le Climat C", "ISR - GREENFIN - FINANSOL", "Croissance", "Grande"],
-    ["FR0013411741", "Amundi RI Impact Green Bonds P Acc", "GREENFIN", "Croissance", "Grande"]
+    [TIKEHAU_INTERNATIONAL, "Tikehau International Cross Assets R Acc", "", "", ""],
+    [LAZARD_PATRIMOINE, "Lazard Patrimoine SRI RC EUR", "ISR", "", ""],
+    [DNCA_APHA_BONDS, "DNCA Invest Alpha Bonds B EUR Acc", "", "", ""],
+    [CARMIGNAC_PATRIMOINE, "Carmignac Patrimoine A EUR Acc", "", "", ""],
+    [DORVAL_GLOBAL_CONVICTIONS, "Dorval Global Convictions R", "ISR", "", ""],
+    [ELEVA_UCITS, "Eleva UCITS Eleva Abs Ret Eurp A2EUR acc", "", "", ""],
+    [MG_LUX_DYNAMIC, "M&G Lux Dynamic Allocat Fd A EUR Acc", "", "", ""],
+    [PIQUEMAL_HOUGHTON, "Piquemal Houghton Global Eq R EUR Acc", "", "", ""],
+    [CLARTAN_VALEURS, "Clartan Valeurs C EUR Acc", "", "", ""],
+    [GINJER_ACTIFS, "Ginjer Actifs 360 A", "", "", ""],
+    [PICTET_TR_ATLAS, "Pictet TR - Atlas P EUR", "", "", ""],
+    [RCO_VALOR, "R-co Valor C EUR", "", "", ""],
+    [CARMIGNAC_EMERGENTS, "Carmignac Emergents A EUR Acc", "ISR", "", ""],
+    [FIDELITY_WORLD, "FF World Fund A Acc EUR", "", "", ""],
+    [RCO_CONVICTION, "R-co Conviction Equity Value Euro C EUR", "", "", ""],
+    [MIROVA_WOMEN, "Mirova Women", "ISR", "", ""],
+    [MIROVA_INSERTION, "Insertion Emplois Dynamique", "ISR - FINANSOL - RELANCE", "", ""],
+    [SYCOMORE_HAPPY_AT_WORK, "Sycomore Fund Happy", "ISR", "", ""],
+    [SYCOMORE_ECO_SOLUTIONS, "Sycomore Eco solution", "ISR - GREENFIN", "", ""],
+    [MANDARINE_TRANSITION, "Mandarine Global Transition", "GREENFIN", "", ""],
+    [MIROVA_EUROPE, "Mirova Europe Environmental Eq R EUR Acc", "ISR - GREENFIN", "", ""],
+    [AMUNDI_RI_GREEN, "Amundi RI Impact Green Bonds P Acc", "GREENFIN", "", ""],
+    [ECOFI_AGIR, "Ecofi Agir Pour Le Climat C", "ISR - GREENFIN - FINANSOL", "", ""],
+    [JPM_HEALTHCARE, "JPM Global Healthcare Fund", "", "", ""],
+    [MANDARINE_SPORT, "Mandarine Global Sport", "ISR", "", ""],
+    [AMUNDI_SOLIDARITE, "Solidarite Habitat et Humanisme", "FINANSOL", "", ""],
+    [ECHIQUIER_AI, "Echiquier Artificial Intelligence", "", "", ""],
+    [PICTET_ROBOTICS, "Pictet Robotics", "", "", ""],
+    [THEMATICS_SAFETY, "NIF Lux Thematics Safety", "ISR", "", ""],
+    [AMIRAL_SEXTANT, "Sextant PME A", "ISR - RELANCE", "", "Petite"],
+    [MONETA_MULTI_CAPS, "Moneta Multi Caps", "RELANCE", "", ""],
 ]
 
 # Fonctions pour récupérer données portefeuille

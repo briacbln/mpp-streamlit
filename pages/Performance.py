@@ -14,32 +14,30 @@ st.set_page_config(
 # Id des fonds (dans l'URL) sur Morningstar
 ids_fonds = [
     "F0GBR04F90", # Volontaire : Carmignac Patrimoine A EUR Acc
+    "F00000V7MO", # Volontaire : Lazard Patrimoine SRI RC EUR
     "F00000ZY7M", # Volontaire : DNCA Invest Alpha Bonds B EUR Acc
     "F000003Y4O", # Volontaire : Dorval Global Convictions R
-    "F00000V7MO", # Volontaire : Lazard Patrimoine SRI RC EUR
     "F0000165CN", # Volontaire : Tikehau International Cross Assets R Acc
     "F000013DD9", # Énergique : Eleva Abs Return Europe Fd A2 EUR Acc
-    "F0GBR04N04", # Énergique : JPMIF Global Macro Opport D (acc) EUR
     "F00000V7MO", # Énergique : Lazard Patrimoine SRI RC EUR
     "F00000ZY64", # Énergique : M&G Lux Dynamic Allocat Fd A EUR Acc
-    "F00001DGJL", # Énergique : Varenne Global A EUR
+    "F0000169SE", # Énergique : Piquemal Houghton
     "F00000V7KE", # Ambitieux : Clartan Valeurs C EUR Acc
-    "F0GBR04QCM", # Ambitieux : Comgest Monde C
-    "F0GBR04VT4", # Ambitieux : Echiquier Agenor SRI Mid Cap Europe A
+    "F00000Y840", # Ambitieux : Pictet Atlas
     "F00000NGS6", # Ambitieux : Ginjer Actifs 360 A
-    "F00000ZY64", # Ambitieux : M&G Lux Dynamic Allocat Fd A EUR Acc
-    "F00001DGJL", # Ambitieux : Varenne Global A EUR
+    "F00000X3BN", # Ambitieux : RCO Valor
     "F0GBR04F8J", # Intrépide : Carmignac Emergents A EUR Acc
-    "F0GBR04QCM", # Intrépide : Comgest Monde C
     "F00000W422", # Intrépide : FF World Fund A Acc EUR
-    "F000005MPD", # Intrépide : JPM US Technology Fund D Acc EUR
-    "F0000026WJ", # Intrépide : Pictet - Gbl Megatrend Select P EUR Acc
+    "F0000169SE", # Intrépide : Piquemal Houghton
     "F0GBR05YT7", # Intrépide : R-co Conviction Equity Value Euro C EUR
-    "F000016OYU", # Climat : Mandarine Global Transition
     "F00000WDKJ", # Climat : Sycomore Eco solution
+    "F000016OYU", # Climat : Mandarine Global Transition
+    "F000003SWV", # Climat : Ecofi Agir pour le climat
+    "F00000S8UQ", # Climat : Mirova Europe
+    "F000013J8O", # Climat : Amundi RI Green Bonds
     "F000013HWO", # Égalité : Mirova Women
     "F0GBR04GGX", # Emploi : Insertion Emplois Dynamique
-    "F00000WI8D", # Emploi : Sycomoree Fund Happy
+    "F00000WI8D", # Emploi : Sycomore Fund Happy
     "F0GBR04GGX", # Relance : Insertion Emplois Dynamique
     "F0GBR06TFP", # Relance : Moneta Multi Caps
     "F000000OZU", # Relance : Sextant PME A
@@ -128,7 +126,7 @@ df = pd.concat(recup_fonds(ids_fonds), axis=1)
 
 # Volontaire
 volontaire = [0 for i in range(6)]
-volontaire_ponde = [0.25, 0.2, 0.15, 0.25, 0.15]
+volontaire_ponde = [0.25, 0.25, 0.2, 0.15, 0.15]
 for i in range(0,6) :
     for j in range (0,5) :
         volontaire[i] += round(df.iloc[i, j] * volontaire_ponde[j], 2)
@@ -136,81 +134,81 @@ df_volontaire = precision_value(df.iloc[:,0:5].T.copy())
 
 # Énergique
 energique = [0 for i in range(6)]
-energique_ponde = [0.2, 0.25, 0.2, 0.15, 0.2]
+energique_ponde = [0.3, 0.25, 0.25, 0.2]
 for i in range(0,6) :
-    for j in range (0,5) :
+    for j in range (0,4) :
         energique[i] += round(df.iloc[i, 5+j] * energique_ponde[j], 2)
-df_energique = precision_value(df.iloc[:,5:10].T.copy())
+df_energique = precision_value(df.iloc[:,5:9].T.copy())
 
 # Ambitieux
 ambitieux = [0 for i in range(6)]
-ambitieux_ponde = [0.18, 0.17, 0.11, 0.18, 0.15, 0.21]
+ambitieux_ponde = [0.25, 0.25, 0.25, 0.25]
 for i in range(0,6) :
-    for j in range (0,6) :
-        ambitieux[i] += round(df.iloc[i, 10+j] * ambitieux_ponde[j], 2)
-df_ambitieux = precision_value(df.iloc[:,10:16].T.copy())
+    for j in range (0,4) :
+        ambitieux[i] += round(df.iloc[i, 9+j] * ambitieux_ponde[j], 2)
+df_ambitieux = precision_value(df.iloc[:,9:13].T.copy())
 
 # Intrépide
 intrepide = [0 for i in range(6)]
-intrepide_ponde = [0.2, 0.19, 0.17, 0.11, 0.13, 0.2]
+intrepide_ponde = [0.25, 0.25, 0.25, 0.25]
 for i in range(0,6) :
-    for j in range (0,6) :
-        intrepide[i] += round(df.iloc[i, 16+j] * intrepide_ponde[j], 2)
-df_intrepide = precision_value(df.iloc[:,16:22].T.copy())
+    for j in range (0,4) :
+        intrepide[i] += round(df.iloc[i, 13+j] * intrepide_ponde[j], 2)
+df_intrepide = precision_value(df.iloc[:,13:17].T.copy())
 
 # Climat 
 climat = [0 for i in range(6)]
-climat_ponde = [0.5, 0.5]
+climat_ponde = [0.23, 0.22, 0.2, 0.2, 0.15]
 for i in range(0,6) :
-    for j in range (0,2) :
-        climat[i] += round(df.iloc[i, 22+j] * climat_ponde[j], 2)
-df_climat = precision_value(df.iloc[:,22:24].T.copy())
+    for j in range (0,5) :
+        climat[i] += round(df.iloc[i, 17+j] * climat_ponde[j], 2)
+df_climat = precision_value(df.iloc[:,17:22].T.copy())
 
 # Égalité 
 egalite = [0 for i in range(6)]
 egalite_ponde = 1
 for i in range(0,6) :
-    egalite[i] += round(df.iloc[i, 24] * egalite_ponde, 2)
-df_egalite = precision_value(df.iloc[:,24:25].T.copy())
+    egalite[i] += round(df.iloc[i, 22] * egalite_ponde, 2)
+df_egalite = precision_value(df.iloc[:,22:23].T.copy())
 
 # Emploi 
 emploi = [0 for i in range(6)]
 emploi_ponde = [0.5, 0.5]
 for i in range(0,6) :
     for j in range (0,2) :
-        emploi[i] += round(df.iloc[i, 22+j] * emploi_ponde[j], 2)
-df_emploi = precision_value(df.iloc[:,25:27].T.copy())
+        emploi[i] += round(df.iloc[i, 23+j] * emploi_ponde[j], 2)
+df_emploi = precision_value(df.iloc[:,23:25].T.copy())
 
 # Relance 
 relance = [0 for i in range(6)]
 relance_ponde = [0.33, 0.34, 0.33]
 for i in range(0,6) :
     for j in range (0,3) :
-        relance[i] += round(df.iloc[i, 22+j] * relance_ponde[j], 2)
-df_relance = precision_value(df.iloc[:,27:30].T.copy())
+        relance[i] += round(df.iloc[i, 25+j] * relance_ponde[j], 2)
+df_relance = precision_value(df.iloc[:,25:28].T.copy())
 
 # Solidarité 
 solidarite = [0 for i in range(6)]
 solidarite_ponde = 1
 for i in range(0,6) :
-    solidarite[i] += round(df.iloc[i, 24] * solidarite_ponde, 2)
-df_solidarite = precision_value(df.iloc[:,30:31].T.copy())
+    solidarite[i] += round(df.iloc[i, 28] * solidarite_ponde, 2)
+df_solidarite = precision_value(df.iloc[:,28:29].T.copy())
 
 # Santé 
 sante = [0 for i in range(6)]
 sante_ponde = [0.5, 0.5]
 for i in range(0,6) :
     for j in range (0,2) :
-        sante[i] += round(df.iloc[i, 22+j] * sante_ponde[j], 2)
-df_sante = precision_value(df.iloc[:,31:33].T.copy())
+        sante[i] += round(df.iloc[i, 29+j] * sante_ponde[j], 2)
+df_sante = precision_value(df.iloc[:,29:31].T.copy())
 
 # Tech 
 tech = [0 for i in range(6)]
 tech_ponde = [0.34, 0.33, 0.33]
 for i in range(0,6) :
     for j in range (0,3) :
-        tech[i] += round(df.iloc[i, 22+j] * tech_ponde[j], 2)
-df_tech = precision_value(df.iloc[:,33:36].T.copy())
+        tech[i] += round(df.iloc[i, 31+j] * tech_ponde[j], 2)
+df_tech = precision_value(df.iloc[:,31:34].T.copy())
 
 perf_portefeuilles = np.zeros((6,11))
 for i in range(0, 6) :
