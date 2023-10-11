@@ -61,9 +61,9 @@ MONETA_MULTI_CAPS = 'FR0010298596'
 
 listePf = [
     [VOLONTAIRE, "5", "3", "3%"],
-    [ENERGIQUE, "5", "4", "5%"],
-    [AMBITIEUX, "6", "5", "8%", ],
-    [INTREPIDE, "6", "6", "12%", ],
+    [ENERGIQUE, "4", "4", "5%"],
+    [AMBITIEUX, "4", "5", "8%", ],
+    [INTREPIDE, "4", "6", "12%", ],
     [EGALITE, "1", "6", "-", ],
     [EMPLOI, "2", "5", "-", ],
     [CLIMAT, "5", "5", "-",],
